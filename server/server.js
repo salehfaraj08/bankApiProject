@@ -172,6 +172,9 @@ app.put('/bank/withdraw/:id/:recieverId', async (req, res) => {
     if (!customer || !reciever) {
         return res.status(400).json({ error: 'customer is not exist' })
     }
+    if(customer.passportId===reciever.passportId){
+        return res.status(400).json({ error: 'cannot transfer from customer to the same customer' })
+    }
     if (transferAmount <= customer.cash && transferAmount > 0) {
         customer.cash -= transferAmount;
         reciever.cash += transferAmount;

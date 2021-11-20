@@ -163,7 +163,7 @@ app.put('/bank/withdraw/:id', async (req, res) => {
 });
 
 ////tranfer from customer to another
-app.put('/bank/withdraw/:id/:recieverId', async (req, res) => {
+app.put('/bank/transfer/:id/:recieverId', async (req, res) => {
     const { id, recieverId } = req.params;
     const transferAmount = parseInt(req.body.transferAmount);
     let file = await getAllCustomers();
